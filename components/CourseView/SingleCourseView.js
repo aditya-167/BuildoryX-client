@@ -16,7 +16,10 @@ const SingleCourseView  = ({
     setEnrolled, 
     }) => {
 
-        
+        let descript = menu.description;
+        let description = descript.split(":")[0];
+        let skills = descript.split(":")[1];
+
         return(
             <>
 <div className = "jumbotron square">
@@ -25,9 +28,11 @@ const SingleCourseView  = ({
                                 <h1 className="text-light font-weight-bold">
                                     {menu.name}
                                 </h1>
-                                <p className = "lead">{menu.description && menu.description}</p>
+                                <p className = "lead">{menu.description && description.substring(0,description.length-7)}</p>
                                 <span class="tag tag-teal">{menu.category}</span>
-                                <p style={{color:"orange",fontSize:"16px"}}>Created by Aditya Srichandan</p>
+                                <p style={{color:"white",fontSize:"19px",fontWeight:"900"}}>Skills: <span style={{fontSize:"17px",fontWeight:"900"}} class="dag tag-deal">  {skills}</span></p>
+
+                                
                             </div>
                             <div className = "col-md-4">
                                 {menu.lessons[0].video && menu.lessons[0].video && !showModal? (
@@ -45,7 +50,7 @@ const SingleCourseView  = ({
                                             width = "100%"
                                             height = "225px"
                                         />
-
+                                        
                                     </div>
                                 ):(
                                     <>
@@ -73,8 +78,10 @@ const SingleCourseView  = ({
                                         {user ? enrolled.status ? " Go to course" : "Enroll" : "Login to Enroll"}
                                     </Button>
                                 )}
-
+                                <p style={{color:"orange",fontSize:"16px"}}>Created by Aditya Srichandan</p>
+                            
                             </div>
+                                
                         
                     </div>
                 </div>
